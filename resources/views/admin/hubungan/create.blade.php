@@ -10,12 +10,14 @@
 			<div class="panel-body">
 				{{ csrf_field() }}
 
+				<input type="hidden" name="penyakit" value="{{ request('penyakit') }}">
+
 				<div class="form-group {{ $errors->has('penyakit') ? 'has-error' : '' }}">
 					<label>Penyakit</label>
-					<select name="penyakit" class="form-control">
+					<select name="hiddenPenyakit" class="form-control" disabled="">
 						<option value="">--pilih--</option>
 						@foreach($penyakits as $data)
-							@if(old('penyakit') == $data->name)
+							@if(request('penyakit') == $data->id)
 								<option value="{{ $data->id }}" selected>{{ title_case($data->name) }}</option>
 							@else
 								<option value="{{ $data->id }}">{{ title_case($data->name) }}</option>

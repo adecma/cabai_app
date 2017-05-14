@@ -31,7 +31,9 @@ class HubunganController extends Controller
 
         $hubungans = Hubungan::latest()->search($q)->paginate($limit);
 
-        return view('admin.hubungan.index', compact('q', 'no', 'hubungans'));
+        $penyakits = Penyakit::orderBy('name', 'asc')->get();
+
+        return view('admin.hubungan.index', compact('q', 'no', 'hubungans', 'penyakits'));
     }
 
     /**

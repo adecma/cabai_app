@@ -5,7 +5,6 @@
         <div class="panel-heading">
             Hubungan : {{ $hubungans->total() }}
             <div class="pull-right">
-                <a href="{{ route('hubungan.create') }}" class="btn btn-primary btn-xs">Tambah</a>
                 <a target="_blank" href="{{ route('hubungan.cetak') }}" class="btn btn-warning btn-xs">Cetak</a>
             </div>
         </div>
@@ -13,7 +12,7 @@
         <div class="panel-body">
             @if(count($hubungans) > 0)
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <form action="{{ route('hubungan.index') }}" method="get" class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon">
@@ -29,6 +28,21 @@
                             </div>
                         </form>
                         <hr>    
+                    </div>
+
+                    <div class="col-md-6">
+                        <form action="{{ route('hubungan.create') }}" method="get" class="form-inline">
+                            <div class="form-group">
+                                <select name="penyakit" id="input" class="form-control" required="required">
+                                    <option value="">--pilih--</option>
+                                    @foreach($penyakits as $penyakit)
+                                        <option value="{{ $penyakit->id }}">{{ $penyakit->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-default">Tambah</button>
+                        </form>
                     </div>
                 </div>
 
