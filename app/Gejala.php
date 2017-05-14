@@ -8,7 +8,8 @@ class Gejala extends Model
 {
     public function penyakits(){
     	return $this->belongsToMany('App\Penyakit')
-    		->withPivot('bobot');
+    		->withPivot('bobot')
+    		->withTimestamps();
     }
 
     public function scopeSearch($query, $q) {

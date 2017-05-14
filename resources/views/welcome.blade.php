@@ -1,17 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Hello</div>
+    <div class="panel panel-success">
+        <div class="panel-heading">Welcome, guest!</div>
 
-                <div class="panel-body">
-                    Welcome, guest!
-                </div>
-            </div>
+        <div class="panel-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi labore voluptate aspernatur, non sequi nemo quisquam quae assumenda eius consequuntur quod reiciendis illum temporibus accusantium officia animi laudantium aut, natus!
         </div>
     </div>
-</div>
 @endsection

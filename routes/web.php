@@ -14,8 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('page1', function () {
+    return view('page.page1');
+})->name('page1');
+Route::get('page2', function () {
+    return view('page.page2');
+})->name('page2');
 
-Route::get('/', 'Auth\LoginController@showLoginForm');
+//Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -36,4 +42,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/penyakit/cetak', 'PenyakitController@cetak')->name('penyakit.cetak');
 	Route::get('/penyakit/pdf/{time}', 'PenyakitController@pdf')->name('penyakit.pdf');
 	Route::resource('penyakit', 'PenyakitController');
+
+	Route::get('/hubungan/cetak', 'HubunganController@cetak')->name('hubungan.cetak');
+	Route::get('/hubungan/pdf/{time}', 'HubunganController@pdf')->name('hubungan.pdf');
+	Route::resource('hubungan', 'HubunganController');
 });

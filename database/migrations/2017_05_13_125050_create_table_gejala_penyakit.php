@@ -18,6 +18,7 @@ class CreateTableGejalaPenyakit extends Migration
             $table->integer('gejala_id')->unsigned();
             $table->integer('penyakit_id')->unsigned();
             $table->decimal('bobot', 2, 1);
+            $table->timestamps();
 
             $table->foreign('gejala_id')->references('id')->on('gejalas');
             $table->foreign('penyakit_id')->references('id')->on('penyakits');

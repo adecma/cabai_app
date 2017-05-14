@@ -47,8 +47,13 @@
                         @if(Auth::user())
                             <li><a href="{{ route('gejala.index') }}">Gejala</a></li>
                             <li><a href="{{ route('penyakit.index') }}">Penyakit</a></li>
-                            <li><a href="#">Hubungan</a></li>
+                            <li><a href="{{ route('hubungan.index') }}">Hubungan</a></li>
+                            <li><a href="#">Riwayat</a></li>
                         @endif
+
+                        <li><a href="#">Konsultasi</a></li>
+                        <li><a href="{{ route('page1') }}">Halaman 1</a></li>
+                        <li><a href="{{ route('page2') }}">Halaman 2</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
