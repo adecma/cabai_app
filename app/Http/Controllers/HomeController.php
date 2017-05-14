@@ -57,6 +57,7 @@ class HomeController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:6',
+            'username' => 'required|min:6',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'old_password' => 'required_with:new_password,new_password_confirmation|min:6|old_password:'.Auth::user()->password,
             'new_password' => 'required_with:old_password,new_password_confirmation|confirmed|min:6|different:old_password',
@@ -66,6 +67,7 @@ class HomeController extends Controller
         
 
         $user->name = $request->input('name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
 
         if (!empty($request->input('old_password'))) {
