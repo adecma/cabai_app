@@ -46,4 +46,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/hubungan/cetak', 'HubunganController@cetak')->name('hubungan.cetak');
 	Route::get('/hubungan/pdf/{time}', 'HubunganController@pdf')->name('hubungan.pdf');
 	Route::resource('hubungan', 'HubunganController');
+
+	Route::get('/riwayat/cetak', 'RiwayatController@cetak')->name('riwayat.cetak');
+	Route::get('/riwayat/pdf/{time}', 'RiwayatController@pdf')->name('riwayat.pdf');
+	Route::resource('riwayat', 'RiwayatController', ['except' => ['create', 'store', 'edit', 'update']]);
 });

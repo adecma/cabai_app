@@ -48,7 +48,7 @@
                             <li><a href="{{ route('gejala.index') }}">Gejala</a></li>
                             <li><a href="{{ route('penyakit.index') }}">Penyakit</a></li>
                             <li><a href="{{ route('hubungan.index') }}">Hubungan</a></li>
-                            <li><a href="#">Riwayat</a></li>
+                            <li><a href="{{ route('riwayat.index') }}">Riwayat</a></li>
                         @endif
 
                         <li><a href="#">Konsultasi</a></li>
