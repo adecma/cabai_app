@@ -24,6 +24,7 @@ Route::get('page2', function () {
 Route::get('konsultasi', 'KonsultasiController@index')->name('konsultasi.index');
 Route::get('konsultasi/gejala', 'KonsultasiController@gejala')->name('konsultasi.gejala');
 Route::post('konsultasi/gejala', 'KonsultasiController@proses')->name('konsultasi.proses');
+Route::get('konsultasi/result/{id}', 'KonsultasiController@result')->name('konsultasi.result');
 
 //Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

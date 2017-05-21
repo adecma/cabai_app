@@ -40,7 +40,9 @@ class RiwayatController extends Controller
      */
     public function show($id)
     {
-        //
+        $riwayat = Riwayat::findOrFail($id);
+
+        return view('admin.riwayat.show', compact('riwayat'));
     }
 
     /**

@@ -51,6 +51,7 @@
                                 <td>{{ $riwayat->pekerjaan }}</td>
                                 <td>{{ $riwayat->created_at->diffForHumans() }}</td>
                                 <td>
+                                    <a href="{{ route('riwayat.show', $riwayat->id) }}" class="btn btn-info btn-xs">Detail</a>
                                     <button type="button" class="btn btn-danger btn-xs btn-delete" value="{{ $riwayat->id }}">Hapus</button>
                                 </td>
                             </tr>

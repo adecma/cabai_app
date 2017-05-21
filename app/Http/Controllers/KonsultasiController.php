@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Gejala;
 use App\Penyakit;
+use App\Riwayat;
 use DB;
 
 class KonsultasiController extends Controller
@@ -47,26 +48,39 @@ class KonsultasiController extends Controller
     			'pekerjaan' => 'required',
     			'gejala' => 'required|min:2'
     		]);
+
+        $gejalas = DB::table('gejalas')->whereIn('id', $request->input('gejala'))->get();
         
     	$penyakits = Penyakit::orderBy('id', 'asc')->get();
 
         $dataStep1 = $this->prosesStep1($penyakits, $request);
 
-        $final = $this->prosesStep2($dataStep1, $request);
+        $response = $this->prosesStep2($dataStep1, $request);
 
-        $hasil = collect($final)
+        $hasil = collect($response)
                         ->sortByDesc(function($value, $key) {
                             return $value['persen'];
                         })
                         ->values()
                         ->first();
 
-        $count = [
-                    'penyakit' => $penyakits->count(), 
-                    'gejala' => count($request->input('gejala'))
-                ];
+        $riwayat = new Riwayat;
+        $riwayat->nama = title_case($request->input('nama'));
+        $riwayat->alamat = title_case($request->input('alamat'));
+        $riwayat->pekerjaan = title_case($request->input('pekerjaan'));
+        $riwayat->gejala = serialize($gejalas);
+        $riwayat->response = serialize($response);
+        $riwayat->hasil = serialize($hasil);
+        $riwayat->save();
 
-    	return view('konsultasi.showResult', compact('final', 'count', 'hasil'));
+    	return redirect()->route('konsultasi.result', $riwayat->id);
+    }
+
+    public function result($id)
+    {
+        $riwayat = Riwayat::findOrFail($id);
+
+        return view('konsultasi.result', compact('riwayat'));
     }
 
     private function prosesStep1($penyakits, Request $request)

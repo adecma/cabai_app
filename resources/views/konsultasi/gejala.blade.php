@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <div class="panel-heading">Konsultasi > Pilih Gejala</div>
 
         <div class="panel-body">
