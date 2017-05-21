@@ -21,6 +21,10 @@ Route::get('page2', function () {
     return view('page.page2');
 })->name('page2');
 
+Route::get('konsultasi', 'KonsultasiController@index')->name('konsultasi.index');
+Route::get('konsultasi/gejala', 'KonsultasiController@gejala')->name('konsultasi.gejala');
+Route::post('konsultasi/gejala', 'KonsultasiController@proses')->name('konsultasi.proses');
+
 //Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');

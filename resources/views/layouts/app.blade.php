@@ -51,7 +51,7 @@
                             <li><a href="{{ route('riwayat.index') }}">Riwayat</a></li>
                         @endif
 
-                        <li><a href="#">Konsultasi</a></li>
+                        <li><a href="{{ route('konsultasi.index') }}">Konsultasi</a></li>
                         <li><a href="{{ route('page1') }}">Halaman 1</a></li>
                         <li><a href="{{ route('page2') }}">Halaman 2</a></li>
                     </ul>

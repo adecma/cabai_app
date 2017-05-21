@@ -19,6 +19,7 @@ class CreateRiwayatsTable extends Migration
             $table->string('alamat');
             $table->string('pekerjaan');
             $table->text('gejala')->nullable();
+            $table->text('response')->nullable();
             $table->text('hasil')->nullable();
             $table->timestamps();
         });
