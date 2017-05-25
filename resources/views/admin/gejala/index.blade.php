@@ -43,7 +43,7 @@
                     <tbody>
                         @foreach($gejalas as $gejala)
                             <tr>
-                                <td>{{ $no++ }}</td>
+                                <td>G{{ $gejala->id }}</td>
                                 <td>{{ $gejala->name }}</td>
                                 <td>
                                     <a href="{{ route('gejala.edit', $gejala->id) }}" class="btn btn-info btn-xs">Edit</a>

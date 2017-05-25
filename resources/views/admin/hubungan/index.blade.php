@@ -52,7 +52,7 @@
                             <th>No</th>
                             <th>Penyakit</th>
                             <th>Gejala</th>
-                            <th colspan="2">Bobot</th>
+                            <th colspan="2" width="25%">Bobot</th>
                         </tr>
                     </thead>
 

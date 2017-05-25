@@ -12,52 +12,97 @@ class GejalaPenyakitSeeder extends Seeder
      */
     public function run()
     {
-    	$trips = [
-    		1 => ['bobot' => 0.7], 
-    		2 => ['bobot' => 0.8], 
-    		5 => ['bobot' => 0.6], 
-    		6 => ['bobot' => 0.7]
+    	$data1 = [
+    		40 => ['bobot' => 0.8],
+            26 => ['bobot' => 0.8],
     	];
-    	Penyakit::findOrFail(1)->gejalas()->attach($trips);
+    	Penyakit::findOrFail(1)->gejalas()->attach($data1);
 
-        $lalatBuah = [
-        	7 => ['bobot' => 0.4], 
-    		8 => ['bobot' => 0.6], 
-    		9 => ['bobot' => 0.8], 
-    		10 => ['bobot' => 0.9]
+        $data2 = [
+        	44 => ['bobot' => 0.4],
+            27 => ['bobot' => 0.3],
+            11 => ['bobot' => 0.2],
+            8 => ['bobot' => 0.3],
+            24 => ['bobot' => 0.7],
+            7 => ['bobot' => 0.4],
+            37 => ['bobot' => 0.3],
+            22 => ['bobot' => 0.6],
+            33 => ['bobot' => 0.5],
         ];
-        Penyakit::findOrFail(2)->gejalas()->attach($lalatBuah);
+        Penyakit::findOrFail(2)->gejalas()->attach($data2);
 
-        $ulatDaun = [
-    		11 => ['bobot' => 0.7], 
-    		12 => ['bobot' => 0.8]
+        $data3 = [
+    		3 => ['bobot' => 0.5],
+            13 => ['bobot' => 0.7],
+            27 => ['bobot' => 0.3],
+            19 => ['bobot' => 0.3],
+            35 => ['bobot' => 0.2],
         ];
-        Penyakit::findOrFail(3)->gejalas()->attach($ulatDaun);
+        Penyakit::findOrFail(3)->gejalas()->attach($data3);
 
-        $kutuKebul = [
-    		1 => ['bobot' => 0.8], 
-			2 => ['bobot' => 0.8], 
-			3 => ['bobot' => 0.4], 
-			13 => ['bobot' => 0.6]
+        $data4 = [
+    		27 => ['bobot' => 0.4],
+            42 => ['bobot' => 0.3],
+            32 => ['bobot' => 0.3],
+            33 => ['bobot' => 0.6],
+            31 => ['bobot' => 0.7],
+            24 => ['bobot' => 0.7],
         ];
-        Penyakit::findOrFail(4)->gejalas()->attach($kutuKebul);
+        Penyakit::findOrFail(4)->gejalas()->attach($data4);
 
-        $virusKeriting = [
-        	1 => ['bobot' => 0.9], 
-			2 => ['bobot' => 0.6], 
-			4 => ['bobot' => 0.8], 
-			14 => ['bobot' => 0.7], 
-			15 => ['bobot' => 0.8]
+        $data5 = [
+        	44 => ['bobot' => 0.4],
+            27 => ['bobot' => 0.4],
+            11 => ['bobot' => 0.2],
+            8 => ['bobot' => 0.3],
+            7 => ['bobot' => 0.4],
+            34 => ['bobot' => 0.6],
+            5 => ['bobot' => 0.6],
+            14 => ['bobot' => 0.8],
         ];
-        Penyakit::findOrFail(5)->gejalas()->attach($virusKeriting);
+        Penyakit::findOrFail(5)->gejalas()->attach($data5);
 
-        $virusKuning = [
-        	3 => ['bobot' => 0.6], 
-			4 => ['bobot' => 0.8], 
-			16 => ['bobot' => 0.6], 
-			17 => ['bobot' => 0.8], 
-			18 => ['bobot' => 0.8]
+        $data6 = [
+        	43 => ['bobot' => 0.4],
+            27 => ['bobot' => 0.4],
+            17 => ['bobot' => 0.3],
+            33 => ['bobot' => 0.3],
+            10 => ['bobot' => 0.2],
+            30 => ['bobot' => 0.6],
+            38 => ['bobot' => 0.4],
+            20 => ['bobot' => 0.5],
+            29 => ['bobot' => 0.7],
+            9 => ['bobot' => 0.6],
         ];
-        Penyakit::findOrFail(6)->gejalas()->attach($virusKuning);
+        Penyakit::findOrFail(6)->gejalas()->attach($data6);
+
+        $data7 = [
+            20 => ['bobot' => 0.4],
+            21 => ['bobot' => 0.5],
+            12 => ['bobot' => 0.7],
+            6 => ['bobot' => 0.6],
+            1 => ['bobot' => 0.8],
+        ];
+        Penyakit::findOrFail(7)->gejalas()->attach($data7);
+
+        $data8 = [
+            25 => ['bobot' => 0.6],
+            41 => ['bobot' => 0.7],
+            28 => ['bobot' => 0.8],
+            36 => ['bobot' => 0.8],
+            2 => ['bobot' => 0.5],
+            39 => ['bobot' => 0.4],
+            4 => ['bobot' => 0.4],
+        ];
+        Penyakit::findOrFail(8)->gejalas()->attach($data8);
+
+        $data9 = [
+            27 => ['bobot' => 0.3],
+            23 => ['bobot' => 0.4],
+            15 => ['bobot' => 0.8],
+            16 => ['bobot' => 0.7],
+            18 => ['bobot' => 0.7],
+        ];
+        Penyakit::findOrFail(9)->gejalas()->attach($data9);
     }
 }

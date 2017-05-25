@@ -24,6 +24,8 @@
             <tr>
                 <th class="tg-head">No</th>
                 <th class="tg-head">Penyakit</th>
+                <th class="tg-head">Keterangan</th>
+                <th class="tg-head">Pengendalian</th>
                 <th class="tg-head">Probabilitas</th>
             </tr>
         </thead>
@@ -32,6 +34,8 @@
                 <tr>
                     <td class="tg-center">{{ $no++ }}</td>
                     <td class="tg-left">{{ $penyakit->name }}</td>
+                    <td class="tg-left">{{ $penyakit->keterangan }}</td>
+                    <td class="tg-left">{{ $penyakit->pengendalian }}</td>
                     <td class="tg-center">{{ $penyakit->probabilitas }}</td>
                 </tr>
             @endforeach

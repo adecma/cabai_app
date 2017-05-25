@@ -37,7 +37,9 @@
                         <tr>
                             <th>No</th>
                             <th>Penyakit</th>
-                            <th colspan="2">Probabilitas</th>
+                            <th>Keterangan</th>
+                            <th>Pengendalian</th>
+                            <th colspan="2" width="25%">Probabilitas</th>
                         </tr>
                     </thead>
 
@@ -46,6 +48,8 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $penyakit->name }}</td>
+                                <td>{{ $penyakit->keterangan }}</td>
+                                <td>{{ $penyakit->pengendalian }}</td>
                                 <td>{{ $penyakit->probabilitas }}</td>
                                 <td>
                                     <a href="{{ route('penyakit.edit', $penyakit->id) }}" class="btn btn-info btn-xs">Edit</a>
