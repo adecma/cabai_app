@@ -49,9 +49,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                        @else
+                        @if (!Auth::guest())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -91,10 +89,10 @@
             @endif
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     @include('layouts.menu_sidebar')
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     @yield('content') 
                 </div>               
             </div>

@@ -12,7 +12,7 @@
         <div class="panel-body">
             @if(count($hubungans) > 0)
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <form action="{{ route('hubungan.index') }}" method="get" class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon">
@@ -30,9 +30,9 @@
                         <hr>    
                     </div>
 
-                    <div class="col-md-6">
-                        <form action="{{ route('hubungan.create') }}" method="get" class="form-inline">
-                            <div class="form-group">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <form action="{{ route('hubungan.create') }}" method="get">
+                            <div class="form-group col-sm-8">
                                 <select name="penyakit" id="input" class="form-control" required="required">
                                     <option value="">--pilih--</option>
                                     @foreach($penyakits as $penyakit)
@@ -40,8 +40,10 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            <button type="submit" class="btn btn-primary btn-default">Tambah</button>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Tambah</button>
+                            </div>                            
                         </form>
                     </div>
                 </div>
