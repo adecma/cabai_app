@@ -2,7 +2,7 @@
 
 <!-- Main Content -->
 @section('content')
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <div class="panel-heading">Reset Password</div>
         <div class="panel-body">
             @if (session('status'))

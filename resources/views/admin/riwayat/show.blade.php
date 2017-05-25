@@ -7,37 +7,42 @@
 @endphp
 
 @section('content')
-    <div class="panel panel-default">
-        <div class="panel-heading">Detail Riwayat</div>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Riwayat > Show
+            <div class="pull-right">
+                <a target="_blank" href="{{ route('riwayat.showCetak', $riwayat->id) }}" class="btn btn-warning btn-xs">Cetak</a>
+            </div>
+        </div>
 			
         <div class="panel-body">
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Identitas</th>
+                            <th colspan="2">Identitas</th>
                             <th>Gejala</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <dl class="dl-horizontal">
-                                    <dt>Nama</dt>
-                                    <dd>{{ $riwayat->nama }}</dd>
-                                    <dt>Alamat</dt>
-                                    <dd>{{ $riwayat->alamat }}</dd>
-                                    <dt>Pekerjaan</dt>
-                                    <dd>{{ $riwayat->pekerjaan }}</dd>
-                                </dl>
-                            </td>
-                            <td>
+                            <td>Nama</td>
+                            <td>{{ $riwayat->nama }}</td>
+                            <td rowspan="3">
                                 <ul class="list-unstyled">
                                     @foreach($gejalas as $gejala)
-                                        <li>{{ $gejala->name }} ({{ $gejala->id }})</li>
+                                        <li># {{ $gejala->name }} ({{ $gejala->id }})</li>
                                     @endforeach
                                 </ul>
                             </td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>{{ $riwayat->alamat }}</td>
+                        </tr>
+                        <tr>
+                            <td>Pekerjaan</td>
+                            <td>{{ $riwayat->pekerjaan }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -133,14 +138,28 @@
             </div>
 
             <h3>Hasil</h3>
-            <dl class="dl-horizontal">
-                <dt>ID</dt>
-                <dd>{{ $hasil['penyakit_id'] }}</dd>
-                <dt>Penyakit</dt>
-                <dd>{{ $hasil['penyakit_nama'] }}</dd>
-                <dt>Persentase</dt>
-                <dd>{{ $hasil['persen'] }}%</dd>
-            </dl>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <tbody>
+                        <tr>
+                            <td><strong>ID</strong></td>
+                            <td>{{ $hasil['penyakit_id'] }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penyakit</strong></td>
+                            <td>{{ $hasil['penyakit_nama'] }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Persentase</strong></td>
+                            <td>{{ $hasil['persen'] }}%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pengendalian</strong></td>
+                            <td>{{ $penyakit->pengendalian}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

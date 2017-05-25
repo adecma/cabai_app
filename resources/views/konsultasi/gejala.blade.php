@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panel panel-info">
+    <div class="panel panel-success">
         <div class="panel-heading">Konsultasi > Pilih Gejala</div>
 
         <div class="panel-body">
@@ -15,11 +15,15 @@
 				<div class="panel-body">
 					<div class="form-group {{ $errors->has('gejala') ? 'has-error' : '' }}">
 						<label class="control-label">Gejala</label>
-						<select name="gejala[]" id="gejala" class="form-control" multiple="">
-							@foreach($gejalas as $gejala)
-								<option value="{{ $gejala->id }}">{{ $gejala->name }}</option>
-							@endforeach
-						</select>
+
+						@foreach($gejalas as $gejala)
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="gejala[]" value="{{ $gejala->id }}">
+									{{ $gejala->name }}
+								</label>
+							</div>
+						@endforeach
 					</div>
 				</div>
 				<div class="panel-footer">

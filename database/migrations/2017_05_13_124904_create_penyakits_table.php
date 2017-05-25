@@ -17,6 +17,8 @@ class CreatePenyakitsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->decimal('probabilitas', 6, 5);
+            $table->text('keterangan');
+            $table->text('pengendalian');
             $table->timestamps();
         });
     }

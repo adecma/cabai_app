@@ -1,30 +1,25 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+//use Auth;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+	if (!Auth::user()) {
+		return view('welcome');
+	}
+    return view('home');;
+})->name('beranda');
+
 Route::get('page1', function () {
-    return view('page.page1');
-})->name('page1');
-Route::get('page2', function () {
-    return view('page.page2');
-})->name('page2');
+	$penyakits = App\Penyakit::orderBy('name', 'asc')->get();
+
+    return view('page.page1', compact('penyakits'));
+})->name('infopenyakit');
 
 Route::get('konsultasi', 'KonsultasiController@index')->name('konsultasi.index');
 Route::get('konsultasi/gejala', 'KonsultasiController@gejala')->name('konsultasi.gejala');
 Route::post('konsultasi/gejala', 'KonsultasiController@proses')->name('konsultasi.proses');
 Route::get('konsultasi/result/{id}', 'KonsultasiController@result')->name('konsultasi.result');
+Route::get('/konsultasi/cetak/{id}', 'KonsultasiController@cetak')->name('konsultasi.cetak');
+Route::get('/konsultasi/pdf/{id}/{time}', 'KonsultasiController@pdf')->name('konsultasi.pdf');
 
 //Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -52,6 +47,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/hubungan/pdf/{time}', 'HubunganController@pdf')->name('hubungan.pdf');
 	Route::resource('hubungan', 'HubunganController');
 
+	Route::get('/riwayat/{id}/cetak', 'RiwayatController@showCetak')->name('riwayat.showCetak');
+	Route::get('/riwayat/{id}/pdf/{time}', 'RiwayatController@showPdf')->name('riwayat.showPdf');
 	Route::get('/riwayat/cetak', 'RiwayatController@cetak')->name('riwayat.cetak');
 	Route::get('/riwayat/pdf/{time}', 'RiwayatController@pdf')->name('riwayat.pdf');
 	Route::resource('riwayat', 'RiwayatController', ['except' => ['create', 'store', 'edit', 'update']]);

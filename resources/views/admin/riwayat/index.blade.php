@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <div class="panel-heading">
             Riwayat : {{ $riwayats->total() }}
             <div class="pull-right">
@@ -49,7 +49,7 @@
                                 <td>{{ $riwayat->nama }}</td>
                                 <td>{{ $riwayat->alamat }}</td>
                                 <td>{{ $riwayat->pekerjaan }}</td>
-                                <td>{{ $riwayat->created_at->diffForHumans() }}</td>
+                                <td>{{ $riwayat->created_at->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('riwayat.show', $riwayat->id) }}" class="btn btn-info btn-xs">Detail</a>
                                     <button type="button" class="btn btn-danger btn-xs btn-delete" value="{{ $riwayat->id }}">Hapus</button>

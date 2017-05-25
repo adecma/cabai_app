@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Riwayat;
+use App\Penyakit;
 use PDF;
 
 class RiwayatController extends Controller
@@ -42,7 +43,27 @@ class RiwayatController extends Controller
     {
         $riwayat = Riwayat::findOrFail($id);
 
-        return view('admin.riwayat.show', compact('riwayat'));
+        $penyakit = Penyakit::find(unserialize($riwayat->hasil)['penyakit_id']);
+
+        return view('admin.riwayat.show', compact('riwayat', 'penyakit'));
+    }
+
+    public function showCetak($id)
+    {
+        return redirect()->route('riwayat.showPdf', [$id, time()]);
+    }
+
+    public function showPdf($id, $time)
+    {
+        $riwayat = Riwayat::findOrFail($id);
+        $penyakit = Penyakit::find(unserialize($riwayat->hasil)['penyakit_id']);
+
+        $no = 1;
+
+        $pdf = PDF::loadView('admin.riwayat.showPdf',compact('riwayat', 'penyakit', 'no'))
+            ->setPaper('a4', 'landscape');
+ 
+        return $pdf->stream('data_detail_riwayat-'.$time.'.pdf');
     }
 
     /**

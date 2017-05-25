@@ -1,14 +1,40 @@
 @extends('layouts.app')
 
+@php
+	$no = 1;
+@endphp
+
 @section('content')
     <div class="panel panel-success">
-        <div class="panel-heading">Halaman Demo</div>
+        <div class="panel-heading">Tentang Penyakit</div>
 
         <div class="panel-body">
-        	<p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium doloribus eius perferendis, in, dolorum tempore inventore modi aliquid, repellat atque perspiciatis expedita, soluta eum molestiae ea. Quidem, debitis, assumenda. <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi vero, aliquam magnam non delectus! Nulla quo nostrum sapiente quod magni voluptates, rerum odit neque possimus blanditiis deleniti, explicabo quam quasi?
-            </p>
+        	<h3 class="text-center">
+        		Tentang Penyakit Pada Ikan Mas
+        	</h3>
+
+        	<div class="table-responsive">
+        		<table class="table table-hover table-bordered">
+        			<thead>
+        				<tr>
+        					<th>No</th>
+        					<th>Nama Penyakit</th>
+        					<th>Keterangan</th>
+        					<th>Pengendalian</th>
+        				</tr>
+        			</thead>
+        			<tbody>
+        				@foreach($penyakits as $penyakit)
+	        				<tr>
+	        					<td>{{ $no++ }}</td>
+	        					<td>{{ $penyakit->name }}</td>
+	        					<td>{{ $penyakit->keterangan }}</td>
+	        					<td>{{ $penyakit->pengendalian }}</td>
+	        				</tr>
+        				@endforeach
+        			</tbody>
+        		</table>
+        	</div>
         </div>
     </div>
 @endsection

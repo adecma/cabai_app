@@ -23,6 +23,7 @@
 </head>
 <body>
     <div id="app">
+        @include('layouts.header')
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -36,24 +37,13 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        @if(Auth::user())
-                            <li><a href="{{ route('gejala.index') }}">Gejala</a></li>
-                            <li><a href="{{ route('penyakit.index') }}">Penyakit</a></li>
-                            <li><a href="{{ route('hubungan.index') }}">Hubungan</a></li>
-                            <li><a href="{{ route('riwayat.index') }}">Riwayat</a></li>
-                        @endif
-
-                        <li><a href="{{ route('konsultasi.index') }}">Konsultasi</a></li>
-                        <li><a href="{{ route('page1') }}">Halaman 1</a></li>
-                        <li><a href="{{ route('page2') }}">Halaman 2</a></li>
+                        <!-- Menu header -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -101,7 +91,10 @@
             @endif
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    @include('layouts.menu_sidebar')
+                </div>
+                <div class="col-md-9">
                     @yield('content') 
                 </div>               
             </div>
@@ -109,7 +102,8 @@
 
         <div class="container">
             <p class="text-center">
-                Copyright © 2017 - Cabai App
+                Sistem Pakar Penyakit Ikan Mas dengan Metode Teorema Bayes <br>
+                Copyright © 2017 - Rizky Agusrullah. All Right Reserved.
             </p>
         </div>
     </div>

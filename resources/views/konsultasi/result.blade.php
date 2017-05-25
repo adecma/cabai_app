@@ -6,50 +6,78 @@
 @endphp
 
 @section('content')
-    <div class="panel panel-info">
-        <div class="panel-heading">Result</div>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Konsultasi > Result
+            <div class="pull-right">
+                <a target="_blank" href="{{ route('konsultasi.cetak', $riwayat->id) }}" class="btn btn-warning btn-xs">Cetak</a>
+            </div>
+        </div>
 			
         <div class="panel-body">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2">Identitas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nama</td>
+                        <td>{{ $riwayat->nama }}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>{{ $riwayat->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pekerjaan</td>
+                        <td>{{ $riwayat->pekerjaan }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Identitas</th>
-                            <th>Gejala</th>
-                            <th>Hasil</th>
+                            <th>Gejala yang dipilih</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <dl class="dl-horizontal">
-                                    <dt>Nama</dt>
-                                    <dd>{{ $riwayat->nama }}</dd>
-                                    <dt>Alamat</dt>
-                                    <dd>{{ $riwayat->alamat }}</dd>
-                                    <dt>Pekerjaan</dt>
-                                    <dd>{{ $riwayat->pekerjaan }}</dd>
-                                </dl>
-                            </td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    @foreach($gejalas as $gejala)
-                                        <li>{{ $gejala->name }} ({{ $gejala->id }})</li>
-                                    @endforeach
-                                </ul>
-                            </td>
-                            <td>
-                                <dl class="dl-horizontal">
-                                    <dt>Penyakit</dt>
-                                    <dd>{{ $hasil['penyakit_nama'] }}</dd>
-                                    <dt>Persentase</dt>
-                                    <dd>{{ $hasil['persen'] }}%</dd>
-                                </dl>
-                            </td>
-                        </tr>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach($gejalas as $gejala)
+                            <tr>
+                                <td>{{ $no++ }}. {{ $gejala->name }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2">Diagnosa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Penyakit</td>
+                        <td>{{ $hasil['penyakit_nama'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Persentase</td>
+                        <td>{{ $hasil['persen'] }}%</td>
+                    </tr>
+                    <tr>
+                        <td>Pengendalian</td>
+                        <td>{{ $penyakit->pengendalian }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

@@ -7,6 +7,7 @@ use App\Gejala;
 use App\Penyakit;
 use App\Riwayat;
 use DB;
+use PDF;
 
 class KonsultasiController extends Controller
 {
@@ -80,7 +81,9 @@ class KonsultasiController extends Controller
     {
         $riwayat = Riwayat::findOrFail($id);
 
-        return view('konsultasi.result', compact('riwayat'));
+        $penyakit = Penyakit::find(unserialize($riwayat->hasil)['penyakit_id']);
+
+        return view('konsultasi.result', compact('riwayat', 'penyakit'));
     }
 
     private function prosesStep1($penyakits, Request $request)
@@ -164,5 +167,21 @@ class KonsultasiController extends Controller
         }
 
         return $dataStep1;
+    }
+
+    public function cetak($id)
+    {
+        return redirect()->route('konsultasi.pdf', [$id, time()]);
+    }
+
+    public function pdf($id, $time)
+    {
+        $riwayat = Riwayat::findOrFail($id);
+        $penyakit = Penyakit::find(unserialize($riwayat->hasil)['penyakit_id']);
+
+        $pdf = PDF::loadView('konsultasi.pdf',compact('riwayat', 'penyakit'))
+            ->setPaper('a4', 'potrait');
+ 
+        return $pdf->stream('konsultasi-'.$time.'.pdf');
     }
 }
