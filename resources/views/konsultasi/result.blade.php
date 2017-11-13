@@ -13,7 +13,7 @@
                 <a target="_blank" href="{{ route('konsultasi.cetak', $riwayat->id) }}" class="btn btn-warning btn-xs">Cetak</a>
             </div>
         </div>
-			
+
         <div class="panel-body">
             <table class="table table-hover table-bordered">
                 <thead>
@@ -60,13 +60,14 @@
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th colspan="2">Diagnosa</th>
+                        <th colspan="3">Diagnosa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Penyakit</td>
                         <td>{{ $hasil['penyakit_nama'] }}</td>
+                        <td rowspan="3" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" class="img-responsive" alt="Image"></td>
                     </tr>
                     <tr>
                         <td>Persentase</td>

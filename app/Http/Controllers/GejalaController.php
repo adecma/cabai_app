@@ -27,7 +27,7 @@ class GejalaController extends Controller
 
         $no = ($limit*$page) - ($limit-1);
 
-        $gejalas = Gejala::latest()->search($q)->paginate($limit);
+        $gejalas = Gejala::orderBy('id', 'asc')->search($q)->paginate($limit);
 
         return view('admin.gejala.index', compact('q', 'no', 'gejalas'));
     }
@@ -139,7 +139,7 @@ class GejalaController extends Controller
 
         $pdf = PDF::loadView('admin.gejala.pdf',compact('gejalas', 'no'))
             ->setPaper('a4', 'potrait');
- 
+
         return $pdf->stream('data_gejala-'.$time.'.pdf');
     }
 }

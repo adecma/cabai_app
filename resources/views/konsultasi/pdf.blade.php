@@ -63,13 +63,14 @@
     <table class="tg">
         <thead>
             <tr>
-                <th class="tg-head" colspan="2">Diagnosa</th>
+                <th class="tg-head" colspan="3">Diagnosa</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="tg-left">Penyakit</td>
                 <td class="tg-left">{{ $hasil['penyakit_nama'] }}</td>
+                <td class="tg-center" rowspan="3" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" width="200px" alt="Image"></td>
             </tr>
             <tr>
                 <td class="tg-left">Persentase</td>

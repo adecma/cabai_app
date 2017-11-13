@@ -51,7 +51,7 @@ class KonsultasiController extends Controller
     		]);
 
         $gejalas = DB::table('gejalas')->whereIn('id', $request->input('gejala'))->get();
-        
+
     	$penyakits = Penyakit::orderBy('id', 'asc')->get();
 
         $dataStep1 = $this->prosesStep1($penyakits, $request);
@@ -91,9 +91,10 @@ class KonsultasiController extends Controller
         $no = 0;
         foreach ($penyakits as $penyakit) {
             $dataStep1[] = [
-                                'penyakit_id' => $penyakit->id, 
-                                'penyakit_nama' => $penyakit->name, 
-                                'penyakit_probabilitas' => $penyakit->probabilitas, 
+                                'penyakit_id' => $penyakit->id,
+                                'penyakit_nama' => $penyakit->name,
+                                'penyakit_probabilitas' => $penyakit->probabilitas,
+                                'img' => $penyakit->img,
                                 'gejala' => null,
                                 'sum' => null,
                                 'persen' => null
@@ -122,8 +123,8 @@ class KonsultasiController extends Controller
                 }
 
                 $dataStep1[$no]['gejala'][] = [
-                                                'gejala_id' => $gejala, 
-                                                'gejala_nama' => $dataGejala->name, 
+                                                'gejala_id' => $gejala,
+                                                'gejala_nama' => $dataGejala->name,
                                                 'bobot' => $bobot,
                                                 'atas' => null,
                                                 'bawah' => null,
@@ -139,21 +140,21 @@ class KonsultasiController extends Controller
 
     private function prosesStep2($dataStep1, Request $request)
     {
-        for ($i=0; $i < count($dataStep1); $i++) { 
+        for ($i=0; $i < count($dataStep1); $i++) {
             $selectedGejala = collect($request->input('gejala'))
                                     ->sort()
                                     ->values()
                                     ->all();
 
-            for ($j=0; $j < count($selectedGejala); $j++) { 
+            for ($j=0; $j < count($selectedGejala); $j++) {
                 $dataStep1[$i]['gejala'][$j]['atas'] = $dataStep1[$i]['gejala'][$j]['bobot'] * $dataStep1[$i]['penyakit_probabilitas'];
 
-                for ($k=0; $k < count($dataStep1); $k++) { 
+                for ($k=0; $k < count($dataStep1); $k++) {
                     $bawah[] = $dataStep1[$k]['gejala'][$j]['bobot'] * $dataStep1[$k]['penyakit_probabilitas'];
                 }
 
                 $dataStep1[$i]['gejala'][$j]['bawah'] = array_sum($bawah);
-                unset($bawah);  
+                unset($bawah);
 
                 $dibagi = $dataStep1[$i]['gejala'][$j]['atas'] / $dataStep1[$i]['gejala'][$j]['bawah'];
                 $dataStep1[$i]['gejala'][$j]['dibagi'] = round($dibagi, 6);
@@ -181,7 +182,7 @@ class KonsultasiController extends Controller
 
         $pdf = PDF::loadView('konsultasi.pdf',compact('riwayat', 'penyakit'))
             ->setPaper('a4', 'potrait');
- 
+
         return $pdf->stream('konsultasi-'.$time.'.pdf');
     }
 }

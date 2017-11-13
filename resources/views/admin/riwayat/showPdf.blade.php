@@ -18,7 +18,7 @@
         .page-break {
             page-break-after: always;
         }
-        
+
         .header,
         .footer {
             width: 100%;
@@ -45,7 +45,7 @@
         $response = unserialize($riwayat->response);
         $hasil = unserialize($riwayat->hasil);
     @endphp
-    
+
     <table class="tg">
         <thead>
             <tr>
@@ -76,7 +76,7 @@
         </tbody>
     </table>
     <br>
-            
+
     <h3>Step 1</h3>
     <table class="tg">
         <thead>
@@ -158,10 +158,10 @@
                     <td class="tg-center">{{ $response[$i]['persen'] }}%</td>
                 @endfor
             </tr>
-            
+
         </tbody>
     </table>
-    
+
     <div class="page-break"></div>
 
     <h3>Hasil</h3>
@@ -170,6 +170,7 @@
             <tr>
                 <td class="tg-left"><strong>ID</strong></td>
                 <td class="tg-left">{{ $hasil['penyakit_id'] }}</td>
+                <td class="tg-center" rowspan="4" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" width="200px" alt="Image"></td>
             </tr>
             <tr>
                 <td class="tg-left"><strong>Penyakit</strong></td>

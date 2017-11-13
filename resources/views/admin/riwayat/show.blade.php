@@ -14,7 +14,7 @@
                 <a target="_blank" href="{{ route('riwayat.showCetak', $riwayat->id) }}" class="btn btn-warning btn-xs">Cetak</a>
             </div>
         </div>
-			
+
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-hover table-bordered">
@@ -47,7 +47,7 @@
                     </tbody>
                 </table>
             </div>
-            
+
             <h3>Step 1</h3>
             <div class="table-responsive">
             	<table class="table table-hover table-bordered">
@@ -132,7 +132,7 @@
                                 <td>{{ $response[$i]['persen'] }}%</td>
                             @endfor
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -144,6 +144,7 @@
                         <tr>
                             <td><strong>ID</strong></td>
                             <td>{{ $hasil['penyakit_id'] }}</td>
+                            <td rowspan="4" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" class="img-responsive" alt="Image"></td>
                         </tr>
                         <tr>
                             <td><strong>Penyakit</strong></td>
