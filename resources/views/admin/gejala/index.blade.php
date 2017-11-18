@@ -28,14 +28,14 @@
                                 </div>
                             </div>
                         </form>
-                        <hr>    
+                        <hr>
                     </div>
                 </div>
 
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>Kode</th>
                             <th colspan="2">Gejala</th>
                         </tr>
                     </thead>
@@ -69,7 +69,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Yakin akan menghapus data ini?</label>
-                                    </div>                                  
+                                    </div>
                                     {{ csrf_field() }}
 
                                     {{ method_field('delete') }}
@@ -106,7 +106,7 @@
                 $('#btn-submit').click(function() {
                     $('#modal-delete').modal('hide');
                 });
-            });         
+            });
         });
     </script>
 @endpush

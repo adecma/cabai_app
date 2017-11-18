@@ -9,6 +9,10 @@
 		<form action="{{ route('penyakit.store') }}" method="post">
 			<div class="panel-body">
 				{{ csrf_field() }}
+				<div class="form-group">
+					<label>ID</label>
+					<input type="text" class="form-control" disabled="" value="{{ 'P' . $last->id+1 }}">
+				</div>
 
 				<div class="form-group {{ $errors->has('penyakit') ? 'has-error' : '' }}">
 					<label>Penyakit</label>

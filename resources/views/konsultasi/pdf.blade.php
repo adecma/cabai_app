@@ -54,7 +54,7 @@
         <tbody>
             @foreach($gejalas as $gejala)
                 <tr>
-                    <td class="tg-left">{{ $no++ }}. {{ $gejala->name }}</td>
+                    <td class="tg-left">{{ $no++ }}. {{ 'G' . $gejala->id . ' - ' . $gejala->name }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -69,7 +69,7 @@
         <tbody>
             <tr>
                 <td class="tg-left">Penyakit</td>
-                <td class="tg-left">{{ $hasil['penyakit_nama'] }}</td>
+                <td class="tg-left">{{ 'P' . $hasil['penyakit_id'] . ' - ' . $hasil['penyakit_nama'] }}</td>
                 <td class="tg-center" rowspan="3" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" width="200px" alt="Image"></td>
             </tr>
             <tr>

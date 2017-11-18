@@ -19,9 +19,9 @@
 					<select name="readPenyakit" class="form-control" disabled="">
 						@foreach($penyakits as $data)
 							@if(old('penyakit', $hubungan->penyakit_id) == $data->id)
-								<option value="{{ $data->id }}" selected>{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}" selected>{{ 'P' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@else
-								<option value="{{ $data->id }}">{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}">{{ 'P' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@endif
 						@endforeach
 					</select>
@@ -32,9 +32,9 @@
 					<select name="gejala" class="form-control">
 						@foreach($gejalas as $data)
 							@if(old('gejala', $hubungan->gejala_id) == $data->id)
-								<option value="{{ $data->id }}" selected>{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}" selected>{{ 'G' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@else
-								<option value="{{ $data->id }}">{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}">{{ 'G' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@endif
 						@endforeach
 					</select>

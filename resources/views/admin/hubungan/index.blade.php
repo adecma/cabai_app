@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </form>
-                        <hr>    
+                        <hr>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -36,14 +36,14 @@
                                 <select name="penyakit" id="input" class="form-control" required="required">
                                     <option value="">--pilih--</option>
                                     @foreach($penyakits as $penyakit)
-                                        <option value="{{ $penyakit->id }}">{{ $penyakit->name }}</option>
+                                        <option value="{{ $penyakit->id }}">{{ 'P' . $penyakit->id . ' - ' . $penyakit->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Tambah</button>
-                            </div>                            
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -62,8 +62,8 @@
                         @foreach($hubungans as $hubungan)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $hubungan->penyakit->name }}</td>
-                                <td>{{ $hubungan->gejala->name }}</td>
+                                <td>{{ 'P' . $hubungan->penyakit->id . ' - ' . $hubungan->penyakit->name }}</td>
+                                <td>{{ 'G' . $hubungan->gejala->id . ' - ' . $hubungan->gejala->name }}</td>
                                 <td>{{ $hubungan->bobot }}</td>
                                 <td>
                                     <a href="{{ route('hubungan.edit', $hubungan->id) }}" class="btn btn-info btn-xs">Edit</a>
@@ -89,7 +89,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Yakin akan menghapus data ini?</label>
-                                    </div>                                  
+                                    </div>
                                     {{ csrf_field() }}
 
                                     {{ method_field('delete') }}
@@ -126,7 +126,7 @@
                 $('#btn-submit').click(function() {
                     $('#modal-delete').modal('hide');
                 });
-            });         
+            });
         });
     </script>
 @endpush

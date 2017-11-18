@@ -18,9 +18,9 @@
 						<option value="">--pilih--</option>
 						@foreach($penyakits as $data)
 							@if(request('penyakit') == $data->id)
-								<option value="{{ $data->id }}" selected>{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}" selected>{{ 'P' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@else
-								<option value="{{ $data->id }}">{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}">{{ 'P' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@endif
 						@endforeach
 					</select>
@@ -32,9 +32,9 @@
 						<option value="">--pilih--</option>
 						@foreach($gejalas as $data)
 							@if(old('gejala') == $data->name)
-								<option value="{{ $data->id }}" selected>{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}" selected>{{ 'G' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@else
-								<option value="{{ $data->id }}">{{ title_case($data->name) }}</option>
+								<option value="{{ $data->id }}">{{ 'G' . $data->id . ' - ' . title_case($data->name) }}</option>
 							@endif
 						@endforeach
 					</select>

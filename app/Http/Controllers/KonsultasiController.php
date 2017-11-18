@@ -36,7 +36,7 @@ class KonsultasiController extends Controller
 
     		return redirect()->route('konsultasi.index');
     	}
-    	$gejalas = Gejala::orderBy('name', 'asc')->get();
+    	$gejalas = Gejala::orderBy('id', 'asc')->get();
 
     	return view('konsultasi.gejala', compact('gejalas'));
     }

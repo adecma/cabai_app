@@ -32,8 +32,8 @@
             @foreach($hubungans as $hubungan)
                 <tr>
                     <td class="tg-center">{{ $no++ }}</td>
-                    <td class="tg-left">{{ $hubungan->penyakit->name }}</td>
-                    <td class="tg-left">{{ $hubungan->gejala->name }}</td>
+                    <td class="tg-left">{{ 'P' . $hubungan->penyakit->id . ' - ' . $hubungan->penyakit->name }}</td>
+                    <td class="tg-left">{{ 'G' . $hubungan->gejala->id . ' - ' . $hubungan->gejala->name }}</td>
                     <td class="tg-center">{{ $hubungan->bobot }}</td>
                 </tr>
             @endforeach

@@ -12,6 +12,11 @@
 
 				{{ method_field('put') }}
 
+				<div class="form-group">
+					<label>ID</label>
+					<input type="text" class="form-control" disabled="" value="{{ 'P' . $penyakit->id }}">
+				</div>
+
 				<div class="form-group {{ $errors->has('penyakit') ? 'has-error' : '' }}">
 					<label>Penyakit</label>
 					<input type="text" class="form-control" name="penyakit" value="{{ old('penyakit', $penyakit->name) }}">

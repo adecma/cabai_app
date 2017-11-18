@@ -18,7 +18,7 @@ class HubunganController extends Controller
     public function index(Request $request)
     {
         $q = $request->input('q');
-        
+
         $limit = 10;
 
         if ($request->has('page')) {
@@ -31,7 +31,7 @@ class HubunganController extends Controller
 
         $hubungans = Hubungan::latest()->search($q)->paginate($limit);
 
-        $penyakits = Penyakit::orderBy('name', 'asc')->get();
+        $penyakits = Penyakit::orderBy('id', 'asc')->get();
 
         return view('admin.hubungan.index', compact('q', 'no', 'hubungans', 'penyakits'));
     }
@@ -152,7 +152,7 @@ class HubunganController extends Controller
 
         $pdf = PDF::loadView('admin.hubungan.pdf',compact('hubungans', 'no'))
             ->setPaper('a4', 'potrait');
- 
+
         return $pdf->stream('data_hubungan-'.$time.'.pdf');
     }
 }

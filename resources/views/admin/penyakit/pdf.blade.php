@@ -22,7 +22,7 @@
     <table class="tg">
         <thead>
             <tr>
-                <th class="tg-head">No</th>
+                <th class="tg-head">Kode</th>
                 <th class="tg-head">Penyakit</th>
                 <th class="tg-head">Keterangan</th>
                 <th class="tg-head">Pengendalian</th>
@@ -32,7 +32,7 @@
         <tbody>
             @foreach($penyakits as $penyakit)
                 <tr>
-                    <td class="tg-center">{{ $no++ }}</td>
+                    <td class="tg-center">{{ 'P' . $penyakit->id }}</td>
                     <td class="tg-left">{{ $penyakit->name }}</td>
                     <td class="tg-left">{{ $penyakit->keterangan }}</td>
                     <td class="tg-left">{{ $penyakit->pengendalian }}</td>

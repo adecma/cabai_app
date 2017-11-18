@@ -20,7 +20,7 @@
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" name="gejala[]" value="{{ $gejala->id }}">
-									{{ $gejala->name }}
+									{{ 'G' . $gejala->id . ' - ' . $gejala->name }}
 								</label>
 							</div>
 						@endforeach
@@ -50,6 +50,6 @@
 				placeholder : 'Pilih Gejala',
 				allowClear: true
 			});
-		});		
+		});
 	</script>
 @endpush

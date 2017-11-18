@@ -27,7 +27,7 @@ class PenyakitController extends Controller
 
         $no = ($limit*$page) - ($limit-1);
 
-        $penyakits = Penyakit::latest()->search($q)->paginate($limit);
+        $penyakits = Penyakit::orderBy('id', 'asc')->search($q)->paginate($limit);
 
         return view('admin.penyakit.index', compact('q', 'no', 'penyakits'));
     }
@@ -39,7 +39,9 @@ class PenyakitController extends Controller
      */
     public function create()
     {
-        return view('admin.penyakit.create');
+        $last = Penyakit::orderBy('id', 'desc')->first();
+
+        return view('admin.penyakit.create', compact('last'));
     }
 
     /**
@@ -137,13 +139,13 @@ class PenyakitController extends Controller
 
     public function pdf($time)
     {
-        $penyakits = Penyakit::orderBy('name', 'asc')->get();
+        $penyakits = Penyakit::orderBy('id', 'asc')->get();
 
         $no = 1;
 
         $pdf = PDF::loadView('admin.penyakit.pdf',compact('penyakits', 'no'))
             ->setPaper('a4', 'potrait');
- 
+
         return $pdf->stream('data_penyakit-'.$time.'.pdf');
     }
 }

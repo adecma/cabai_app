@@ -22,14 +22,14 @@
     <table class="tg">
         <thead>
             <tr>
-                <th class="tg-head">No</th>
+                <th class="tg-head">Kode</th>
                 <th class="tg-head">Gejala</th>
             </tr>
         </thead>
         <tbody>
             @foreach($gejalas as $gejala)
                 <tr>
-                    <td class="tg-center">{{ $no++ }}</td>
+                    <td class="tg-center">{{ 'G' . $gejala->id }}</td>
                     <td class="tg-left">{{ $gejala->name }}</td>
                 </tr>
             @endforeach

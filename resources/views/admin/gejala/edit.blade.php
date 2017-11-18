@@ -12,8 +12,13 @@
 
 				{{ method_field('put') }}
 
+				<div class="form-group">
+					<label>ID</label>
+					<input type="text" class="form-control" disabled="" value="{{ 'G' . $gejala->id }}">
+				</div>
+
 				<div class="form-group {{ $errors->has('gejala') ? 'has-error' : '' }}">
-					<label>Kriteria</label>
+					<label>Gejala</label>
 					<input type="text" class="form-control" name="gejala" value="{{ old('gejala', $gejala->name) }}">
 				</div>
 

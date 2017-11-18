@@ -28,14 +28,14 @@
                                 </div>
                             </div>
                         </form>
-                        <hr>    
+                        <hr>
                     </div>
                 </div>
 
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>Kode</th>
                             <th>Penyakit</th>
                             <th>Keterangan</th>
                             <th>Pengendalian</th>
@@ -46,7 +46,7 @@
                     <tbody>
                         @foreach($penyakits as $penyakit)
                             <tr>
-                                <td>{{ $no++ }}</td>
+                                <td>{{ 'P' . $penyakit->id }}</td>
                                 <td>{{ $penyakit->name }}</td>
                                 <td>{{ $penyakit->keterangan }}</td>
                                 <td>{{ $penyakit->pengendalian }}</td>
@@ -75,7 +75,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Yakin akan menghapus data ini?</label>
-                                    </div>                                  
+                                    </div>
                                     {{ csrf_field() }}
 
                                     {{ method_field('delete') }}
@@ -112,7 +112,7 @@
                 $('#btn-submit').click(function() {
                     $('#modal-delete').modal('hide');
                 });
-            });         
+            });
         });
     </script>
 @endpush

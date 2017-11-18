@@ -39,7 +39,9 @@ class GejalaController extends Controller
      */
     public function create()
     {
-        return view('admin.gejala.create');
+        $last = Gejala::orderBy('id', 'desc')->first();
+
+        return view('admin.gejala.create', compact('last'));
     }
 
     /**
@@ -133,7 +135,7 @@ class GejalaController extends Controller
 
     public function pdf($time)
     {
-        $gejalas = Gejala::orderBy('name', 'asc')->get();
+        $gejalas = Gejala::orderBy('id', 'asc')->get();
 
         $no = 1;
 

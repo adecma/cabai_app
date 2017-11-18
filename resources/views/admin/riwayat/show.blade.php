@@ -31,7 +31,7 @@
                             <td rowspan="3">
                                 <ul class="list-unstyled">
                                     @foreach($gejalas as $gejala)
-                                        <li># {{ $gejala->name }} ({{ $gejala->id }})</li>
+                                        <li># {{ 'G' . $gejala->id . ' - ' . $gejala->name }}</li>
                                     @endforeach
                                 </ul>
                             </td>
@@ -54,7 +54,7 @@
             		<thead>
             			<tr>
 	            			@foreach($response as $data)
-		            			<th colspan="2">Penyakit ID : {{ $data['penyakit_id'] }}</th>
+		            			<th colspan="2">Penyakit ID : P{{ $data['penyakit_id'] }}</th>
 	            			@endforeach
             			</tr>
             		</thead>
@@ -68,7 +68,7 @@
             			@for($i = 0; $i < count($response[0]['gejala']); $i++)
 							<tr>
 								@for($j = 0; $j < count($response); $j++)
-									<td>{{ $response[$j]['gejala'][$i]['gejala_id'] }}</td>
+									<td>G{{ $response[$j]['gejala'][$i]['gejala_id'] }}</td>
 									<td>{{ $response[$j]['gejala'][$i]['bobot'] }}</td>
 								@endfor
 							</tr>
@@ -83,7 +83,7 @@
                     <thead>
                         <tr>
                             @foreach($response as $data)
-                                <th colspan="3">Penyakit ID : {{ $data['penyakit_id'] }}</th>
+                                <th colspan="3">Penyakit ID : P{{ $data['penyakit_id'] }}</th>
                             @endforeach
                         </tr>
                     </thead>
@@ -114,7 +114,7 @@
                     <thead>
                         <tr>
                             @foreach($response as $data)
-                                <th colspan="2">Penyakit ID : {{ $data['penyakit_id'] }}</th>
+                                <th colspan="2">Penyakit ID : P{{ $data['penyakit_id'] }}</th>
                             @endforeach
                         </tr>
                     </thead>
@@ -143,7 +143,7 @@
                     <tbody>
                         <tr>
                             <td><strong>ID</strong></td>
-                            <td>{{ $hasil['penyakit_id'] }}</td>
+                            <td>P{{ $hasil['penyakit_id'] }}</td>
                             <td rowspan="4" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" class="img-responsive" alt="Image"></td>
                         </tr>
                         <tr>

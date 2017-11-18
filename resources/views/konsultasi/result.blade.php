@@ -50,7 +50,7 @@
                         @endphp
                         @foreach($gejalas as $gejala)
                             <tr>
-                                <td>{{ $no++ }}. {{ $gejala->name }}</td>
+                                <td>{{ $no++ }}. {{ 'G' . $gejala->id . ' - ' . $gejala->name }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -66,7 +66,7 @@
                 <tbody>
                     <tr>
                         <td>Penyakit</td>
-                        <td>{{ $hasil['penyakit_nama'] }}</td>
+                        <td>{{ 'P' . $hasil['penyakit_id'] . ' - ' . $hasil['penyakit_nama'] }}</td>
                         <td rowspan="3" width="30%"><img src="{{ isset($hasil['img']) ? asset('img/' . $hasil['img']) : asset('img/no-pict.jpg') }}" class="img-responsive" alt="Image"></td>
                     </tr>
                     <tr>
