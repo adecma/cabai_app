@@ -54,6 +54,16 @@ class KonsultasiController extends Controller
 
     	$penyakits = Penyakit::orderBy('id', 'asc')->get();
 
+        // jika ada penyakit yang belum mendapatkan hubungan dengan gejala, maka dianggap terjadi kesalahan
+        $countHubungan = DB::table('gejala_penyakit')->groupBy('penyakit_id')->get(['penyakit_id'])->count();
+        $countPenyakit = $penyakits->count();
+        if ($countPenyakit != $countHubungan) {
+            session()->flash('danger', 'alert-danger');
+            session()->flash('notifikasi', 'Maaf, terjadi kesalahan. Silakan coba beberapa saat lagi.');
+
+            return redirect()->route('konsultasi.index');
+        }
+
         $dataStep1 = $this->prosesStep1($penyakits, $request);
 
         $response = $this->prosesStep2($dataStep1, $request);
