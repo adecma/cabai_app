@@ -107,6 +107,27 @@
                 <p class="text-center">
                     Tidak ada data.
                 </p>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <form action="{{ route('hubungan.create') }}" method="get">
+                            <div class="form-group col-sm-8">
+                                <select name="penyakit" id="input" class="form-control" required="required">
+                                    <option value="">--pilih--</option>
+                                    @foreach($penyakits as $penyakit)
+                                        <option value="{{ $penyakit->id }}">{{ 'P' . $penyakit->id . ' - ' . $penyakit->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <button type="submit" class="btn btn-primary">Tambah</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             @endif
         </div>
     </div>

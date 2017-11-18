@@ -7,6 +7,7 @@ use App\Hubungan;
 use App\Penyakit;
 use App\Gejala;
 use PDF;
+use DB;
 
 class HubunganController extends Controller
 {
@@ -29,7 +30,7 @@ class HubunganController extends Controller
 
         $no = ($limit*$page) - ($limit-1);
 
-        $hubungans = Hubungan::latest()->search($q)->paginate($limit);
+        $hubungans = Hubungan::orderBy('id', 'asc')->search($q)->paginate($limit);
 
         $penyakits = Penyakit::orderBy('id', 'asc')->get();
 
@@ -41,10 +42,17 @@ class HubunganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $penyakits = Penyakit::orderBy('name', 'asc')->get();
-        $gejalas = Gejala::orderBy('name', 'asc')->get();
+        $penyakits = Penyakit::orderBy('id', 'asc')->get();
+        $gejalas = Gejala::orderBy('id', 'asc')
+                    ->whereNotExists(function ($query) use ($request) {
+                        $query->select(DB::raw(1))
+                                ->from('gejala_penyakit')
+                                ->where('penyakit_id', $request->penyakit)
+                                ->whereRaw('gejalas.id = gejala_penyakit.gejala_id');
+                    })
+                    ->get();
 
         return view('admin.hubungan.create', compact('penyakits', 'gejalas'));
     }
