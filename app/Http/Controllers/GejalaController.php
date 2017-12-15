@@ -52,6 +52,16 @@ class GejalaController extends Controller
      */
     public function store(Request $request)
     {
+        $check = Gejala::where('name', title_case($request->input('gejala')))
+                ->first();
+
+        if (!is_null($check)) {
+            session()->flash('notifikasi', 'Maaf, Data telah ada sebelumnya');
+            session()->flash('danger', 'alert-danger');
+
+            return redirect()->route('gejala.index');
+        }
+
         $this->validate($request, [
                 'gejala' => 'required|min:10|max:200',
             ]);

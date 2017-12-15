@@ -52,6 +52,16 @@ class PenyakitController extends Controller
      */
     public function store(Request $request)
     {
+        $check = Penyakit::where('name', title_case($request->input('penyakit')))
+                ->first();
+
+        if (!is_null($check)) {
+            session()->flash('notifikasi', 'Maaf, Data telah ada sebelumnya');
+            session()->flash('danger', 'alert-danger');
+
+            return redirect()->route('penyakit.index');
+        }
+
         $this->validate($request, [
                 'penyakit' => 'required|min:3|max:150',
                 'probabilitas' => 'required|min:7|max:7|regex:/^[0-9\.]*$/iu',
@@ -60,6 +70,8 @@ class PenyakitController extends Controller
         $penyakit = new Penyakit;
         $penyakit->name = title_case($request->input('penyakit'));
         $penyakit->probabilitas = $request->input('probabilitas');
+        $penyakit->keterangan = 'default keterangan';
+        $penyakit->pengendalian = 'default pengendalian';
         $penyakit->save();
 
         session()->flash('notifikasi', '<strong>Berhasil!</strong> Data disimpan.');
