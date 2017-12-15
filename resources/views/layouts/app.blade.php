@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     @stack('css')
 
     <!-- Scripts -->
@@ -37,7 +37,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -84,7 +84,7 @@
                     <div class="alert {{ session()->has('danger') ? session('danger') : 'alert-success' }} text-center">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         {!! session('notifikasi') !!}
-                    </div>    
+                    </div>
                 </div>
             @endif
 
@@ -93,8 +93,8 @@
                     @include('layouts.menu_sidebar')
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                    @yield('content') 
-                </div>               
+                    @yield('content')
+                </div>
             </div>
         </div>
 
@@ -107,8 +107,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/jquery-3.1.0.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery-3.1.0.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     @stack('js')
 </body>
 </html>

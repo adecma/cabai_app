@@ -32,7 +32,7 @@
         <tbody>
             @foreach($penyakits as $penyakit)
                 <tr>
-                    <td class="tg-center">{{ 'P' . $penyakit->id }}</td>
+                    <td class="tg-center">P{{ $penyakit->id }}</td>
                     <td class="tg-left">{{ $penyakit->name }}</td>
                     <td class="tg-left">{{ $penyakit->keterangan }}</td>
                     <td class="tg-left">{{ $penyakit->pengendalian }}</td>

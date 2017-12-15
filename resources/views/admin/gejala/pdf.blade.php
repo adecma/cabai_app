@@ -29,7 +29,7 @@
         <tbody>
             @foreach($gejalas as $gejala)
                 <tr>
-                    <td class="tg-center">{{ 'G' . $gejala->id }}</td>
+                    <td class="tg-center">G{{ $gejala->id }}</td>
                     <td class="tg-left">{{ $gejala->name }}</td>
                 </tr>
             @endforeach

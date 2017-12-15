@@ -14,7 +14,7 @@
 
 				<div class="form-group">
 					<label>ID</label>
-					<input type="text" class="form-control" disabled="" value="{{ 'P' . $penyakit->id }}">
+					<input type="text" class="form-control" disabled="" value="P{{ $penyakit->id }}">
 				</div>
 
 				<div class="form-group {{ $errors->has('penyakit') ? 'has-error' : '' }}">
