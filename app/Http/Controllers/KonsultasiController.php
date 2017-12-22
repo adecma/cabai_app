@@ -48,7 +48,11 @@ class KonsultasiController extends Controller
     			'alamat' => 'required',
     			'pekerjaan' => 'required',
     			'gejala' => 'required|min:2'
-    		]);
+    		],
+            [
+                'gejala.min' => 'Gejala yang di pilih minimal 2',
+                'gejala.required' => 'Gejala wajib dipilih'
+            ]);
 
         $gejalas = DB::table('gejalas')->whereIn('id', $request->input('gejala'))->get();
 
@@ -83,6 +87,9 @@ class KonsultasiController extends Controller
         $riwayat->response = serialize($response);
         $riwayat->hasil = serialize($hasil);
         $riwayat->save();
+
+        // save temp identity user
+        session()->flashInput($request->all());
 
     	return redirect()->route('konsultasi.result', $riwayat->id);
     }
